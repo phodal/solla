@@ -102,6 +102,7 @@
     "validate-commit-msg": "^2.12.2"
   },
   "dependencies": {
+    "random-js": "^1.0.8",
     "svg.js": "^2.6.3",
     "svgdom": "^0.0.15"
   }

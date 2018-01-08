@@ -30,7 +30,9 @@ let ColorUtils = {
     return GrowthColor.randomGroup[value]
   },
   getGrowthColor: {},
-  getRedColor: {}
+  getRedColor: (pos: number) => {
+    return GrowthColor.redGroup[pos]
+  }
 }
 
 export default ColorUtils

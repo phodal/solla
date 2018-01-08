@@ -1,4 +1,3 @@
-// returns a window with a document and an svg root node
 const window = require('svgdom')
 const SVG = require('svg.js')(window)
 const document = window.document

@@ -2,14 +2,13 @@
 const window   = require('svgdom')
 const SVG      = require('svg.js')(window)
 const document = window.document
+const fs = require("fs");
  
-// create svg.js instance 
-const draw = SVG(document.documentElement)
+const draw = SVG(document.documentElement).size(1800, 1000)
  
-// use svg.js as normal 
-draw.rect(100,100).fill('yellow').move(50,50)
+draw.rect(1800, 1000).attr({ fill: '#f06' })
  
-// get your svg as string 
-console.log(draw.svg())
-// or 
-console.log(draw.node.outerHtml)
+var svgContent = draw.svg();
+
+fs.writeFileSync("output.svg", svgContent, 'utf8');
+

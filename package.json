@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/phodal/solla/issues"
   },
-  "homepage": "https://github.com/phodal/solla#readme"
+  "homepage": "https://github.com/phodal/solla#readme",
+  "dependencies": {
+    "svg.js": "^2.6.3",
+    "svgdom": "^0.0.15"
+  }
 }

@@ -9,7 +9,8 @@ const pkg = require('./package.json')
 const libraryName = 'solla'
 
 export default {
-  input: `src/${libraryName}.ts`,
+  // input: `src/${libraryName}.ts`,
+  input: `src/cli.ts`,
   output: [
     { file: pkg.main, name: camelCase(libraryName), format: 'umd' },
     { file: pkg.module, format: 'cjs' },

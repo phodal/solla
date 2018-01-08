@@ -1,4 +1,5 @@
-const random = require('random-js')
+const Random = require('random-js')
+let random = new Random()
 
 const GrowthColor = {
   randomGroup: [
@@ -26,7 +27,8 @@ const GrowthColor = {
 
 let ColorUtils = {
   getRandomColor: () => {
-    var value = random.integer(0, GrowthColor.randomGroup.length)
+    let value = random.integer(0, GrowthColor.randomGroup.length)
+    console.log(value)
     return GrowthColor.randomGroup[value]
   },
   getGrowthColor: {},

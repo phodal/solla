@@ -1,3 +1,13 @@
-node_modules/
-.idea/
 output.svg
+node_modules
+coverage
+.nyc_output
+.DS_Store
+*.log
+.vscode
+.idea
+dist
+compiled
+.awcache
+output.svg
+.rpt2_cache

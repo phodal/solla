@@ -3,7 +3,7 @@ import ColorUtils from '../utils/ColorUtils'
 
 export default class BackgroundDrawer extends BaseSVGDrawer {
   private fillColor: string
-  int(): any {
+  init(): any {
     this.fillColor = ColorUtils.getRandomColor()
   }
 

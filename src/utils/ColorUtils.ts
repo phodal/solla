@@ -28,7 +28,6 @@ const GrowthColor = {
 let ColorUtils = {
   getRandomColor: () => {
     let value = random.integer(0, GrowthColor.randomGroup.length)
-    console.log(value)
     return GrowthColor.randomGroup[value]
   },
   getGrowthColor: {},

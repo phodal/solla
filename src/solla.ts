@@ -1,19 +1,23 @@
 import BackgroundDrawer from './drawer/BackgroundDrawer'
 import BaseSVGDrawer from './drawer/BaseSVGDrawer'
+import VSDrawer from './drawer/VSDrawer'
 
 const fs = require('fs')
 
 export default class Solla {
-  private type: string
-  constructor(type: string) {
-    this.type = type
+  private options: any
+  constructor(options: any) {
+    this.options = options
   }
 
   generate() {
     let svgDrawer = new BaseSVGDrawer()
 
-    if (this.type === 'Background') {
+    if (this.options['type'] === 'Background') {
       svgDrawer = new BackgroundDrawer()
+    } else if (this.options['type'] === 'VS') {
+      svgDrawer = new VSDrawer(this.options.stacks)
+      svgDrawer.init()
     }
     fs.writeFileSync('output.svg', svgDrawer.draw(), 'utf8')
   }

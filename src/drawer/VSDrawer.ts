@@ -1,15 +1,39 @@
-export default class VSDrawer implements BaseDraw {
+import BaseSVGDrawer from './BaseSVGDrawer'
+import fs from 'fs'
+import path from 'path'
+
+interface StackResource {
+  stack: string
+  content: string
+}
+
+export default class VSDrawer extends BaseSVGDrawer {
   private stacks: Array<string>
+  private resources: Array<StackResource> = []
 
   constructor(stacks: Array<string>) {
-    this.stacks = stacks
+    super()
+    this.stacks = ['react', 'angular']
   }
 
-  int(): any {
-    return undefined
+  init(): any {
+    for (let index in this.stacks) {
+      let filePath = __dirname + path.normalize('/resources/' + this.stacks[index] + '-1.svg')
+      console.log(filePath)
+      if (fs.existsSync(filePath)) {
+        let content = fs.readFileSync(filePath, 'utf-8')
+        console.log(content)
+        this.resources.push({
+          stack: this.stacks[index],
+          content: content.toString()
+        })
+        console.log(content)
+      }
+    }
   }
 
   draw(): any {
-    return undefined
+    console.log(this.resources)
+    return this.resources
   }
 }

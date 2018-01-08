@@ -5,14 +5,25 @@ let program = require('commander')
 let version = require('../package.json').version
 
 function sollaBg() {
-  let solla = new Solla('Background')
+  let solla = new Solla({
+    type: 'Background'
+  })
+  solla.generate()
+}
+
+function sollaVs(stacks: string) {
+  let solla = new Solla({
+    type: 'VS',
+    stacks: stacks
+  })
   solla.generate()
 }
 
 program
   .version(version)
   .usage('[options]')
-  .option('-b, new background', 'create new ADR', sollaBg)
+  .option('-b, new background', 'create new ADR', new Solla('Background').generate())
+  .option('-v, new background <f> [vs...]', 'create new ADR', sollaVs)
 
 program.parse(process.argv)
 

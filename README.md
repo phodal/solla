@@ -1,6 +1,12 @@
-# Solla -- a cover image generator
+# Solla -- a cover vector image generator
 
 [![Build Status](https://travis-ci.org/phodal/solla.svg?branch=master)](https://travis-ci.org/phodal/solla)
+
+Features:
+
+ - Poly Background Generate (todo)
+ - VS SVG Generate (todo)
+ - List Generate (todo)
 
 License
 ---

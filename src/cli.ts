@@ -5,8 +5,8 @@ let program = require('commander')
 let version = require('../package.json').version
 
 function sollaBg() {
-  let solla = new Solla()
-  solla.draw()
+  let solla = new Solla('Background')
+  solla.generate()
 }
 
 program

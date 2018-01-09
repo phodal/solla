@@ -17,8 +17,11 @@ export default class Solla {
       svgDrawer = new BackgroundDrawer()
     } else if (this.options['type'] === 'VS') {
       svgDrawer = new VSDrawer(this.options.stacks)
-      svgDrawer.init()
+    } else {
+      return
     }
+
+    svgDrawer.init()
     fs.writeFileSync('output.svg', svgDrawer.draw(), 'utf8')
   }
 }

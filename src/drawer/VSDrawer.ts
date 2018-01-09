@@ -47,7 +47,9 @@ export default class VSDrawer extends BaseSVGDrawer {
   }
 
   draw(): any {
-    this.basedSvg.svg.g = []
+    if (!this.basedSvg.svg.g) {
+      this.basedSvg.svg.g = []
+    }
 
     for (let index in this.resources) {
       let resource = this.resources[index]

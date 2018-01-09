@@ -1,6 +1,7 @@
 import BackgroundDrawer from './drawer/BackgroundDrawer'
 import BaseSVGDrawer from './drawer/BaseSVGDrawer'
 import VSDrawer from './drawer/VSDrawer'
+import LowPolyDrawer from './drawer/LowPolyDrawer'
 
 const fs = require('fs')
 
@@ -12,13 +13,14 @@ export default class Solla {
 
   async generate() {
     let svgDrawer = new BaseSVGDrawer()
+    let type = this.options['type']
 
-    if (this.options['type'] === 'BG') {
+    if (type === 'BG') {
       svgDrawer = new BackgroundDrawer()
-    } else if (this.options['type'] === 'VS') {
+    } else if (type === 'VS') {
       svgDrawer = new VSDrawer(this.options.stacks)
-    } else {
-      return
+    } else if (type === 'LP') {
+      svgDrawer = new LowPolyDrawer()
     }
 
     await svgDrawer.init()

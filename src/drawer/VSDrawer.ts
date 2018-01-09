@@ -22,18 +22,15 @@ export default class VSDrawer extends BaseSVGDrawer {
       console.log(filePath)
       if (fs.existsSync(filePath)) {
         let content = fs.readFileSync(filePath, 'utf-8')
-        console.log(content)
         this.resources.push({
           stack: this.stacks[index],
           content: content.toString()
         })
-        console.log(content)
       }
     }
   }
 
   draw(): any {
-    console.log(this.resources)
     return this.resources
   }
 }

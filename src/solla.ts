@@ -13,7 +13,8 @@ export default class Solla {
   generate() {
     let svgDrawer = new BaseSVGDrawer()
 
-    if (this.options['type'] === 'Background') {
+    console.log(this.options)
+    if (this.options['type'] === 'BG') {
       svgDrawer = new BackgroundDrawer()
     } else if (this.options['type'] === 'VS') {
       svgDrawer = new VSDrawer(this.options.stacks)

@@ -1,8 +1,9 @@
 {
   "name": "solla",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/solla.es5.js",
+  "bin": "dist/solla.es5.js",
   "typings": "dist/types/solla.d.ts",
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",

@@ -49,11 +49,13 @@ export default class VSDrawer extends BaseSVGDrawer {
   draw(): any {
     for (let index in this.resources) {
       let resource = this.resources[index]
-      if (!this.basedSvg.svg.path) {
-        this.basedSvg.svg.path = []
+      if (!this.basedSvg.svg.g) {
+        this.basedSvg.svg.g = {
+          path: []
+        }
       }
       for (let j in resource.parsed) {
-        this.basedSvg.svg.path.push(resource.parsed[j])
+        this.basedSvg.svg.g.path.push(resource.parsed[j])
       }
     }
     return builder.buildObject(this.basedSvg)

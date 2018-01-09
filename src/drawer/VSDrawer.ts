@@ -59,6 +59,9 @@ export default class VSDrawer extends BaseSVGDrawer {
 
       this.basedSvg.svg.g.push({
         g: {
+          $: {
+            transform: 'translate(416.000000, 385.000000)'
+          },
           path: path
         }
       })

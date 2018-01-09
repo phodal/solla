@@ -8,7 +8,6 @@ export default class BackgroundDrawer extends BaseSVGDrawer {
   }
 
   draw(): any {
-    console.log(this.fillColor)
     this.drawer.rect(1800, 1000).attr({ fill: this.fillColor })
     return this.drawer.svg()
   }

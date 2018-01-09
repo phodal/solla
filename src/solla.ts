@@ -10,7 +10,7 @@ export default class Solla {
     this.options = options
   }
 
-  generate() {
+  async generate() {
     let svgDrawer = new BaseSVGDrawer()
 
     if (this.options['type'] === 'BG') {
@@ -21,7 +21,7 @@ export default class Solla {
       return
     }
 
-    svgDrawer.init()
+    await svgDrawer.init()
     fs.writeFileSync('output.svg', svgDrawer.draw(), 'utf8')
   }
 }

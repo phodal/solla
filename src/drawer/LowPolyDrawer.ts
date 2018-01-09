@@ -1,4 +1,5 @@
 import BaseSVGDrawer from './BaseSVGDrawer'
+import ColorUtils from '../utils/ColorUtils'
 let Trianglify = require('trianglify')
 
 export default class LowPolyDrawer extends BaseSVGDrawer {
@@ -6,6 +7,7 @@ export default class LowPolyDrawer extends BaseSVGDrawer {
 
   draw(): any {
     let pattern = Trianglify({
+      x_colors: ColorUtils.getHappyColor(),
       width: 1800,
       height: 1000
     })

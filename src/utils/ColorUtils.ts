@@ -41,7 +41,7 @@ let ColorUtils = {
     return GrowthColor.redGroup[pos]
   },
   getHappyColor: () => {
-    let hsv = tinycolor(ColorUtils.getCustomRandomColor()).toHsv()
+    let hsv = tinycolor(ColorUtils.getRandomColor()).toHsv()
     let color = Please.make_scheme(
       { h: hsv.h, s: hsv.s, v: hsv.v },
       {

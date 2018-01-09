@@ -5,11 +5,7 @@ export default class LowPolyDrawer extends BaseSVGDrawer {
   init(): any {}
 
   draw(): any {
-    let colorFunc = function(x: number, y: number) {
-      return 'hsl(' + Math.floor(Math.abs(x * y) * 360) + ',80%,60%)'
-    }
     let pattern = Trianglify({
-      color_function: colorFunc,
       width: 1800,
       height: 1000
     })

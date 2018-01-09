@@ -1,8 +1,9 @@
 {
   "name": "solla",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/solla.es5.js",
+  "module": "dist/solla.umd.js",
   "bin": "dist/solla.es5.js",
   "typings": "dist/types/solla.d.ts",
   "scripts": {
@@ -88,6 +89,7 @@
     "rollup": "^0.53.0",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.9.0",
     "semantic-release": "^11.0.2",

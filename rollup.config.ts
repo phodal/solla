@@ -3,6 +3,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 import camelCase from 'lodash.camelcase'
 import typescript from 'rollup-plugin-typescript2'
+import replace from 'rollup-plugin-replace'
 
 const pkg = require('./package.json')
 
@@ -15,6 +16,7 @@ export default {
     { file: pkg.main, name: camelCase(libraryName), format: 'umd' },
     { file: pkg.module, format: 'cjs' },
   ],
+  banner: '#!/usr/bin/env node',
   sourcemap: true,
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   external: [],
@@ -33,5 +35,9 @@ export default {
 
     // Resolve source maps to the original source
     sourceMaps(),
+
+    replace({
+      '#!/usr/bin/env node': ''
+    }),
   ],
 }

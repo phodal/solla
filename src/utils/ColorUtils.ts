@@ -1,4 +1,5 @@
 const Random = require('random-js')
+let randomColor = require('randomcolor') // import the script
 let random = new Random()
 
 const GrowthColor = {
@@ -26,9 +27,12 @@ const GrowthColor = {
 }
 
 let ColorUtils = {
-  getRandomColor: () => {
+  getCustomRandomColor: () => {
     let value = random.integer(0, GrowthColor.randomGroup.length)
     return GrowthColor.randomGroup[value]
+  },
+  getRandomColor: () => {
+    return randomColor()
   },
   getGrowthColor: {},
   getRedColor: (pos: number) => {

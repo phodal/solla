@@ -18,9 +18,9 @@ export default class VSDrawer extends BaseSVGDrawer {
   private resources: Array<StackResource> = []
   private basedSvg: any
 
-  constructor(stacks: Array<string>) {
+  constructor(stacks: string) {
     super()
-    this.stacks = ['react', 'angular']
+    this.stacks = stacks.split(',')
   }
 
   async init() {

@@ -1,6 +1,8 @@
 const Random = require('random-js')
 let randomColor = require('randomcolor') // import the script
 let random = new Random()
+let Please = require('pleasejs')
+let tinycolor = require('tinycolor2')
 
 const GrowthColor = {
   randomGroup: [
@@ -37,6 +39,18 @@ let ColorUtils = {
   getGrowthColor: {},
   getRedColor: (pos: number) => {
     return GrowthColor.redGroup[pos]
+  },
+  getHappyColor: () => {
+    let hsv = tinycolor(ColorUtils.getCustomRandomColor()).toHsv()
+    let color = Please.make_scheme(
+      { h: hsv.h, s: hsv.s, v: hsv.v },
+      {
+        scheme_type: 'triadic',
+        format: 'hex'
+      }
+    )
+
+    return color
   }
 }
 

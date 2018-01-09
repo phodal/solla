@@ -1,5 +1,4 @@
 import BaseSVGDrawer from './BaseSVGDrawer'
-
 let Trianglify = require('trianglify')
 
 export default class LowPolyDrawer extends BaseSVGDrawer {

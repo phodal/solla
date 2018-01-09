@@ -105,10 +105,12 @@
   "dependencies": {
     "colors": "^1.1.2",
     "commander": "^2.12.2",
+    "pleasejs": "^0.4.2",
     "random-js": "^1.0.8",
     "randomcolor": "^0.5.3",
     "svg.js": "^2.6.3",
     "svgdom": "^0.0.15",
+    "tinycolor2": "^1.4.1",
     "trianglify": "^1.2.0",
     "xml2js": "^0.4.19"
   }

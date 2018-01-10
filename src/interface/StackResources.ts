@@ -3,4 +3,6 @@ export interface StackResource {
   content: string
   parsed: any
   viewBox: any
+  defs: any
+  type: any
 }

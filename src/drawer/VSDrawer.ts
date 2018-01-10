@@ -34,6 +34,8 @@ export default class VSDrawer extends BaseSVGDrawer {
         let content = fs.readFileSync(filePath, 'utf-8')
         let parseContent = ''
         let viewBox: any = null
+        let defs: any = null
+        let type: any = null
         await parser.parseString(content.toString(), (err: any, result: any) => {
           if (err) {
             console.log(err)
@@ -42,8 +44,14 @@ export default class VSDrawer extends BaseSVGDrawer {
           viewBox = result.svg.$.viewBox
           if (result.svg.path) {
             parseContent = result.svg.path
+            type = 'path'
           } else if (result.svg.g) {
             parseContent = result.svg.g
+            type = 'g'
+          }
+
+          if (result.svg.defs) {
+            defs = result.svg.defs
           }
         })
 
@@ -51,7 +59,9 @@ export default class VSDrawer extends BaseSVGDrawer {
           stack: this.stacks[index],
           content: content.toString(),
           parsed: parseContent,
-          viewBox: viewBox
+          viewBox: viewBox,
+          defs: defs,
+          type: type
         })
       } else {
         console.log(`cannot find file: ${filePath}`)
@@ -73,16 +83,35 @@ export default class VSDrawer extends BaseSVGDrawer {
       }
 
       let position = PositionUtils.getPosition(this.resources.length, parseInt(index, 10), resource.viewBox)
-      this.basedSvg.svg.g.push({
-        g: {
-          $: {
-            transform: `translate(${position.x}, ${position.y})`
-          },
-          path: path
+      if (resource.defs) {
+        this.basedSvg.svg.defs.push({
+          defs: resource.defs
+        })
+      }
+      let graph
+
+      if (resource.parsed.g) {
+        graph = {
+          g: {
+            $: resource.parsed.g
+          }
         }
-      })
+        graph.g.$['transform'] = `translate(${position.x}, ${position.y})`
+      } else {
+        graph = {
+          g: {
+            $: {
+              transform: `translate(${position.x}, ${position.y})`
+            }
+          }
+        }
+      }
+
+      graph.g[resource.type] = path
+
+      this.basedSvg.svg.g.push(graph)
     }
-    console.log(this.basedSvg)
+    console.log(this.basedSvg.svg.g)
     return builder.buildObject(this.basedSvg)
   }
 }

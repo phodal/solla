@@ -29,14 +29,9 @@ const GrowthColor = {
 }
 
 let ColorUtils = {
-  getCustomRandomColor: () => {
-    let value = random.integer(0, GrowthColor.randomGroup.length)
-    return GrowthColor.randomGroup[value]
-  },
   getRandomColor: () => {
     return randomColor()
   },
-  getGrowthColor: {},
   getRedColor: (pos: number) => {
     return GrowthColor.redGroup[pos]
   },

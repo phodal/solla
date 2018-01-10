@@ -13,7 +13,7 @@ let PositionUtils = {
     }
 
     function getXPosition () {
-      return SOLLA_CONFIG.WIDTH / (2 + size - 1) * (index + 1) - SOLLA_CONFIG.ICON.WIDTH / 2
+      return SOLLA_CONFIG.WIDTH / (size + 1) * (index + 1) - SOLLA_CONFIG.ICON.WIDTH / 2
     }
 
     return {

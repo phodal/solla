@@ -1,6 +1,4 @@
-const Random = require('random-js')
 let randomColor = require('randomcolor') // import the script
-let random = new Random()
 let Please = require('pleasejs')
 let tinycolor = require('tinycolor2')
 

@@ -1,6 +1,6 @@
 let colors = require('colors')
 let program = require('commander')
-let version = require('../package.json').version
+let version = require('../../package.json').version
 
 import Solla from './solla'
 

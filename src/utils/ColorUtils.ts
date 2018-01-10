@@ -36,7 +36,7 @@ let ColorUtils = {
   getHappyColor: () => {
     let hsv = tinycolor(ColorUtils.getRandomColor()).toHsv()
     let color = Please.make_scheme(
-      { h: hsv.h, s: hsv.s, v: hsv.v },
+      {h: hsv.h, s: hsv.s, v: hsv.v},
       {
         scheme_type: 'triadic',
         format: 'hex'

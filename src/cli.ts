@@ -7,7 +7,7 @@ import Solla from './solla'
 function sollaBg() {
   let solla = new Solla({
     type: 'BG'
-  })
+  });
   solla.generate()
 }
 
@@ -15,14 +15,14 @@ function sollaVs(stacks: string) {
   let solla = new Solla({
     type: 'VS',
     stacks: stacks
-  })
+  });
   solla.generate()
 }
 
 function sollaLP() {
   let solla = new Solla({
     type: 'LP'
-  })
+  });
   solla.generate()
 }
 

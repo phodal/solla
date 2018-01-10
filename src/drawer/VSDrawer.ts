@@ -2,6 +2,7 @@ import BaseSVGDrawer from './BaseSVGDrawer'
 import * as fs from 'fs'
 import * as path from 'path'
 import SOLLA_CONFIG from '../utils/contants'
+import PositionUtils from "../utils/PositionUtils";
 
 let xml2js = require('xml2js')
 
@@ -60,10 +61,11 @@ export default class VSDrawer extends BaseSVGDrawer {
         path.push(parsed)
       }
 
+      let position = PositionUtils.getPosition(this.resources.length, parseInt(index, 10));
       this.basedSvg.svg.g.push({
         g: {
           $: {
-            transform: 'translate(416.000000, 385.000000)'
+            transform: `translate(${position.x}, ${position.y})`
           },
           path: path
         }

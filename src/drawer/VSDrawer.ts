@@ -44,6 +44,8 @@ export default class VSDrawer extends BaseSVGDrawer {
           content: content.toString(),
           parsed: parseContent
         })
+      } else {
+        console.log("cannot find file: " + filePath)
       }
     }
   }
@@ -71,6 +73,7 @@ export default class VSDrawer extends BaseSVGDrawer {
         }
       })
     }
+    console.log(this.basedSvg)
     return builder.buildObject(this.basedSvg)
   }
 }

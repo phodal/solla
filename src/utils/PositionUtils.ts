@@ -1,7 +1,7 @@
 import SOLLA_CONFIG from "../utils/contants";
 
 let PositionUtils = {
-  getPosition: (size: number, index: number): Position => {
+  getPosition: (size: number, index: number): SollaPosition => {
     if (size === 1) {
       return {
         x: SOLLA_CONFIG.WIDTH / 2 - SOLLA_CONFIG.ICON.WIDTH / 2,

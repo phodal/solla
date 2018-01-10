@@ -1,4 +1,4 @@
-type Position = {
+type SollaPosition = {
   x: number,
   y: number
 }

@@ -32,7 +32,7 @@ export default class VSDrawer extends BaseSVGDrawer {
       let filePath = __dirname + path.normalize('/resources/' + this.stacks[index] + '-1.svg')
       if (fs.existsSync(filePath)) {
         let content = fs.readFileSync(filePath, 'utf-8')
-        let parseContent = ''
+        let parseContent: string = ''
         let viewBox: any = null
         let defs: any = null
         let type: any = null
@@ -70,6 +70,12 @@ export default class VSDrawer extends BaseSVGDrawer {
   }
 
   draw (): any {
+    this.buildSVG()
+    console.log(this.basedSvg.svg.g)
+    return builder.buildObject(this.basedSvg)
+  }
+
+  private buildSVG () {
     if (!this.basedSvg.svg.g) {
       this.basedSvg.svg.g = []
     }
@@ -111,7 +117,5 @@ export default class VSDrawer extends BaseSVGDrawer {
 
       this.basedSvg.svg.g.push(graph)
     }
-    console.log(this.basedSvg.svg.g)
-    return builder.buildObject(this.basedSvg)
   }
 }

@@ -20,12 +20,12 @@ export default class VSDrawer extends BaseSVGDrawer {
   private resources: Array<StackResource> = []
   private basedSvg: any
 
-  constructor(stacks: string) {
+  constructor (stacks: string) {
     super()
     this.stacks = stacks.split(',')
   }
 
-  async init() {
+  async init () {
     this.drawer.rect(SOLLA_CONFIG.WIDTH, SOLLA_CONFIG.HEIGHT).attr({fill: '#3498db'})
     await parser.parseString(this.drawer.svg(), (err: any, result: any) => {
       if (err) {
@@ -57,7 +57,7 @@ export default class VSDrawer extends BaseSVGDrawer {
     }
   }
 
-  draw(): any {
+  draw (): any {
     if (!this.basedSvg.svg.g) {
       this.basedSvg.svg.g = []
     }

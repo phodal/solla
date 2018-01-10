@@ -1,4 +1,5 @@
 interface BaseDraw {
-  init(): any
-  draw(): any
+  init (): any
+
+  draw (): any
 }

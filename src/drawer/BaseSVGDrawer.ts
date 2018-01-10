@@ -5,11 +5,11 @@ const SVG = require('svg.js')(window)
 export default class BaseSVGDrawer implements BaseDraw {
   drawer: any = SVG(window.document.documentElement).size(SOLLA_CONFIG.WIDTH, SOLLA_CONFIG.HEIGHT)
 
-  init(): any {
+  init (): any {
     return undefined
   }
 
-  draw(): any {
+  draw (): any {
     return undefined
   }
 }

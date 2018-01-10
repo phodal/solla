@@ -40,7 +40,11 @@ export default class VSDrawer extends BaseSVGDrawer {
           }
 
           viewBox = result.svg.$.viewBox
-          parseContent = result.svg.path
+          if (result.svg.path) {
+            parseContent = result.svg.path
+          } else if (result.svg.g) {
+            parseContent = result.svg.g
+          }
         })
 
         this.resources.push({

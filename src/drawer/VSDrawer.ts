@@ -3,17 +3,12 @@ import * as fs from 'fs'
 import * as path from 'path'
 import SOLLA_CONFIG from '../utils/contants'
 import PositionUtils from '../utils/PositionUtils'
+import { StackResource } from '../interface/StackResources'
 
 let xml2js = require('xml2js')
 
 let parser = new xml2js.Parser()
 let builder = new xml2js.Builder()
-
-interface StackResource {
-  stack: string
-  content: string
-  parsed: any
-}
 
 export default class VSDrawer extends BaseSVGDrawer {
   private stacks: Array<string>
@@ -38,18 +33,21 @@ export default class VSDrawer extends BaseSVGDrawer {
       if (fs.existsSync(filePath)) {
         let content = fs.readFileSync(filePath, 'utf-8')
         let parseContent = ''
+        let viewBox: any = null
         await parser.parseString(content.toString(), (err: any, result: any) => {
           if (err) {
             console.log(err)
           }
 
+          viewBox = result.svg.$.viewBox
           parseContent = result.svg.path
         })
 
         this.resources.push({
           stack: this.stacks[index],
           content: content.toString(),
-          parsed: parseContent
+          parsed: parseContent,
+          viewBox: viewBox
         })
       } else {
         console.log(`cannot find file: ${filePath}`)
@@ -70,7 +68,7 @@ export default class VSDrawer extends BaseSVGDrawer {
         path.push(parsed)
       }
 
-      let position = PositionUtils.getPosition(this.resources.length, parseInt(index, 10))
+      let position = PositionUtils.getPosition(this.resources.length, parseInt(index, 10), resource.viewBox)
       this.basedSvg.svg.g.push({
         g: {
           $: {

@@ -1,9 +1,17 @@
 import SOLLA_CONFIG from '../utils/contants'
 
 let PositionUtils = {
-  getPosition: (size: number, index: number): SollaPosition => {
-    let defaultX = SOLLA_CONFIG.WIDTH / 2 - SOLLA_CONFIG.ICON.WIDTH / 2
-    let defaultY = SOLLA_CONFIG.HEIGHT / 2 - SOLLA_CONFIG.ICON.HEIGHT / 2
+  getPosition: (size: number, index: number, viewBox: any): SollaPosition => {
+    let iconWidth = SOLLA_CONFIG.ICON.WIDTH
+    let iconHeight = SOLLA_CONFIG.ICON.HEIGHT
+    if (viewBox) {
+      let pos = viewBox.split(' ')
+      iconWidth = pos[2]
+      iconHeight = pos[3]
+    }
+
+    let defaultX = SOLLA_CONFIG.WIDTH / 2 - iconWidth / 2
+    let defaultY = SOLLA_CONFIG.HEIGHT / 2 - iconHeight / 2
 
     if (size === 1) {
       return {
@@ -13,7 +21,7 @@ let PositionUtils = {
     }
 
     function getXPosition () {
-      return SOLLA_CONFIG.WIDTH / (size + 1) * (index + 1) - SOLLA_CONFIG.ICON.WIDTH / 2
+      return SOLLA_CONFIG.WIDTH / (size + 1) * (index + 1) - iconWidth / 2
     }
 
     return {

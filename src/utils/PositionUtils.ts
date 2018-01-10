@@ -1,4 +1,4 @@
-import SOLLA_CONFIG from "../utils/contants";
+import SOLLA_CONFIG from '../utils/contants'
 
 let PositionUtils = {
   getPosition: (size: number, index: number): SollaPosition => {

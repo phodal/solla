@@ -5,7 +5,9 @@ import SOLLA_CONFIG from '../utils/contants'
 let Trianglify = require('trianglify')
 
 export default class LowPolyDrawer extends BaseSVGDrawer {
-  init(): any {}
+  init(): any {
+    return undefined
+  }
 
   draw(): any {
     let pattern = Trianglify({

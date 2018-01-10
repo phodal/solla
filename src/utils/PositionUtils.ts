@@ -10,23 +10,21 @@ let PositionUtils = {
       iconHeight = pos[3]
     }
 
-    let defaultX = SOLLA_CONFIG.WIDTH / 2 - iconWidth / 2
-    let defaultY = SOLLA_CONFIG.HEIGHT / 2 - iconHeight / 2
+    let yPos = SOLLA_CONFIG.HEIGHT / 2 - iconHeight / 2
+    let xPos = SOLLA_CONFIG.WIDTH / (size + 1) * (index + 1) - iconWidth / 2
 
-    if (size === 1) {
-      return {
-        x: defaultX,
-        y: defaultY
-      }
-    }
+    if (viewBox) {
+      let pos = viewBox.split(' ')
+      let x = pos[0]
+      let y = pos[1]
 
-    function getXPosition () {
-      return SOLLA_CONFIG.WIDTH / (size + 1) * (index + 1) - iconWidth / 2
+      xPos = xPos - x
+      yPos = yPos - y
     }
 
     return {
-      x: getXPosition(),
-      y: defaultY
+      x: xPos,
+      y: yPos
     }
   }
 }

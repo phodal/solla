@@ -1,5 +1,6 @@
 import BaseSVGDrawer from './BaseSVGDrawer'
 import ColorUtils from '../utils/ColorUtils'
+import SOLLA_CONFIG from '../utils/contants'
 
 export default class BackgroundDrawer extends BaseSVGDrawer {
   private fillColor: string
@@ -8,7 +9,7 @@ export default class BackgroundDrawer extends BaseSVGDrawer {
   }
 
   draw(): any {
-    this.drawer.rect(1800, 1000).attr({ fill: this.fillColor })
+    this.drawer.rect(SOLLA_CONFIG.WIDTH, SOLLA_CONFIG.HEIGHT).attr({ fill: this.fillColor })
     return this.drawer.svg()
   }
 }

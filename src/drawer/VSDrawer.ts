@@ -1,6 +1,7 @@
 import BaseSVGDrawer from './BaseSVGDrawer'
 import fs from 'fs'
 import path from 'path'
+import SOLLA_CONFIG from '../utils/contants'
 
 let xml2js = require('xml2js')
 
@@ -24,7 +25,7 @@ export default class VSDrawer extends BaseSVGDrawer {
   }
 
   async init() {
-    this.drawer.rect(1800, 1000).attr({ fill: '#3498db' })
+    this.drawer.rect(SOLLA_CONFIG.WIDTH, SOLLA_CONFIG.HEIGHT).attr({ fill: '#3498db' })
     await parser.parseString(this.drawer.svg(), (err: any, result: any) => {
       this.basedSvg = result
     })

@@ -84,7 +84,6 @@ export default class VSDrawer extends BaseSVGDrawer {
 
     let positions = PositionUtils.getBasePosition(this.stacks.length)
     for (let i = 0;i < positions.length - 1; i ++) {
-      console.log(positions[i], positions[i + 1])
       this.drawer
         .polygon(`${positions[i]},0 ${positions[i + 1]},1000 1800,1000 1800,0`)
         .fill(ColorUtils.getRandomColor())

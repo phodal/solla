@@ -22,8 +22,7 @@ export default class VSDrawer extends BaseSVGDrawer {
   }
 
   async init () {
-    let randomColor = ColorUtils.getRandomColor()
-    this.drawBackground(randomColor)
+    this.drawBackground()
 
     await parser.parseString(this.drawer.svg(), (err: any, result: any) => {
       if (err) {
@@ -78,9 +77,23 @@ export default class VSDrawer extends BaseSVGDrawer {
     return builder.buildObject(this.basedSvg)
   }
 
-  private drawBackground (randomColor: any) {
-    this.drawer.rect(SOLLA_CONFIG.WIDTH, SOLLA_CONFIG.HEIGHT).attr({fill: randomColor})
-    this.drawer.text('@phodal').move(SOLLA_CONFIG.WIDTH - 180, SOLLA_CONFIG.HEIGHT - 80).font({size: 24}).fill({color: '#fff'})
+  private drawBackground () {
+    this.drawer
+      .rect(SOLLA_CONFIG.WIDTH, SOLLA_CONFIG.HEIGHT)
+      .attr({fill: ColorUtils.getRandomColor()})
+
+    this.drawer
+      .text('@phodal')
+      .move(SOLLA_CONFIG.WIDTH - 180, SOLLA_CONFIG.HEIGHT - 80)
+      .font({size: 24})
+      .fill({color: '#fff'})
+
+    // console.log(this.stacks.length)
+    // let position = PositionUtils.getBasePosition(this.stacks.length, parseInt('0', 10))
+    // console.log(position)
+    // this.drawer
+    //   .polygon(`${position.xPos},0 ${position.xPos},${position.yPos}, 0, ${position.yPos}`)
+    //   .fill(ColorUtils.getRandomColor())
   }
 
   private buildSVG () {

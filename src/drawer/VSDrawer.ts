@@ -4,6 +4,7 @@ import * as path from 'path'
 import SOLLA_CONFIG from '../utils/contants'
 import PositionUtils from '../utils/PositionUtils'
 import { StackResource } from '../interface/StackResources'
+import ColorUtils from '../utils/ColorUtils'
 
 let xml2js = require('xml2js')
 
@@ -21,7 +22,8 @@ export default class VSDrawer extends BaseSVGDrawer {
   }
 
   async init () {
-    this.drawer.rect(SOLLA_CONFIG.WIDTH, SOLLA_CONFIG.HEIGHT).attr({fill: '#3498db'})
+    let randomColor = ColorUtils.getRandomColor()
+    this.drawer.rect(SOLLA_CONFIG.WIDTH, SOLLA_CONFIG.HEIGHT).attr({fill: randomColor})
     await parser.parseString(this.drawer.svg(), (err: any, result: any) => {
       if (err) {
         console.log(err)

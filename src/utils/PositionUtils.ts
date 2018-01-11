@@ -2,7 +2,11 @@ import SOLLA_CONFIG from '../utils/contants'
 
 let PositionUtils = {
   getBasePosition: (size: number) => {
-    // return SOLLA_CONFIG.WIDTH / (size + 1) * (index + 1)
+    let results: number[] = []
+    for (let i = 0; i < size; i++) {
+      results.push(SOLLA_CONFIG.WIDTH / (size + 1) * (i + 1))
+    }
+    return results
   },
   getPosition: (size: number, index: number, viewBox: any): SollaPosition => {
     let iconWidth = SOLLA_CONFIG.ICON.WIDTH

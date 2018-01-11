@@ -88,12 +88,16 @@ export default class VSDrawer extends BaseSVGDrawer {
       .font({size: 24})
       .fill({color: '#fff'})
 
-    // console.log(this.stacks.length)
-    // let position = PositionUtils.getBasePosition(this.stacks.length, parseInt('0', 10))
+    console.log(this.stacks.length)
+    let positions = PositionUtils.getBasePosition(this.stacks.length)
+
+    for (let i = 0;i < positions.length - 1; i ++) {
+      console.log(positions[i], positions[i + 1])
+      this.drawer
+        .polygon(`${positions[i]},0 ${positions[i + 1]},1000 1800,1000 1800,0`)
+        .fill(ColorUtils.getRandomColor())
+    }
     // console.log(position)
-    // this.drawer
-    //   .polygon(`${position.xPos},0 ${position.xPos},${position.yPos}, 0, ${position.yPos}`)
-    //   .fill(ColorUtils.getRandomColor())
   }
 
   private buildSVG () {

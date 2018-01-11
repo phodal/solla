@@ -44,7 +44,7 @@ export default class VSDrawer extends BaseSVGDrawer {
 
   private async addFilter () {
     let filter: any = null
-    let dropDownEffect = ShadowHelper.getDropDownEffect()
+    let dropDownEffect = ShadowHelper.getDropShadow()
     await parser.parseString(dropDownEffect, (err: any, result: any) => {
       if (err) {
         console.log(err)

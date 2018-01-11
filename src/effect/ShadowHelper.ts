@@ -1,5 +1,5 @@
 let ShadowHelper = {
-  getDropDownEffect: () => {
+  getDropShadow: () => {
     return `
 <filter id="dropShadow">
   <feGaussianBlur in="SourceAlpha" stdDeviation="3" />

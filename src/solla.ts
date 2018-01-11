@@ -7,11 +7,12 @@ const fs = require('fs')
 
 export default class Solla {
   private options: any
-  constructor(options: any) {
+
+  constructor (options: any) {
     this.options = options
   }
 
-  async generate() {
+  async generate () {
     let svgDrawer = new BaseSVGDrawer()
     let type = this.options['type']
 
@@ -24,6 +25,6 @@ export default class Solla {
     }
 
     await svgDrawer.init()
-    fs.writeFileSync('output.svg', svgDrawer.draw(), 'utf8')
+    fs.writeFileSync('output.svg', await svgDrawer.draw(), 'utf8')
   }
 }

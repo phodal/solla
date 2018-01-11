@@ -5,6 +5,7 @@ import SOLLA_CONFIG from '../utils/contants'
 import PositionUtils from '../utils/PositionUtils'
 import { StackResource } from '../interface/StackResources'
 import ColorUtils from '../utils/ColorUtils'
+import ShadowHelper from '../effect/ShadowHelper'
 
 let xml2js = require('xml2js')
 
@@ -30,6 +31,35 @@ export default class VSDrawer extends BaseSVGDrawer {
       }
       this.basedSvg = result
     })
+
+    await this.addFilter()
+    await this.buildResources()
+  }
+  async draw () {
+
+    await this.buildSVG()
+    console.log(this.basedSvg)
+    return builder.buildObject(this.basedSvg)
+  }
+
+  private async addFilter () {
+    let filter: any = null
+    let dropDownEffect = ShadowHelper.getDropDownEffect()
+    await parser.parseString(dropDownEffect, (err: any, result: any) => {
+      if (err) {
+        console.log(err)
+      }
+
+      filter = result.filter
+      result.filter.$ = {
+        id: 'dropShadow'
+      }
+
+      this.basedSvg.svg.filter = filter
+    })
+  }
+
+  private async buildResources () {
     for (let index in this.stacks) {
       let filePath = __dirname + path.normalize('/resources/' + this.stacks[index] + '-1.svg')
       if (fs.existsSync(filePath)) {
@@ -71,12 +101,6 @@ export default class VSDrawer extends BaseSVGDrawer {
     }
   }
 
-  draw (): any {
-    this.buildSVG()
-    console.log(this.basedSvg.svg.g)
-    return builder.buildObject(this.basedSvg)
-  }
-
   private drawBackground () {
     this.drawer
       .rect(SOLLA_CONFIG.WIDTH, SOLLA_CONFIG.HEIGHT)
@@ -87,6 +111,7 @@ export default class VSDrawer extends BaseSVGDrawer {
       this.drawer
         .polygon(`${positions[i]},0 ${positions[i + 1]},1000 1800,1000 1800,0`)
         .fill(ColorUtils.getRandomColor())
+        .attr('filter', `url(#dropShadow)`)
     }
 
     this.drawer
@@ -124,10 +149,12 @@ export default class VSDrawer extends BaseSVGDrawer {
           }
         }
         graph.g.$['transform'] = `translate(${position.x}, ${position.y})`
+        graph.g.$['filter'] = `url(#dropShadow)`
       } else {
         graph = {
           g: {
             $: {
+              filter: `url(#dropShadow)`,
               transform: `translate(${position.x}, ${position.y})`
             }
           }

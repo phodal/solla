@@ -23,7 +23,8 @@ export default class VSDrawer extends BaseSVGDrawer {
 
   async init () {
     let randomColor = ColorUtils.getRandomColor()
-    this.drawer.rect(SOLLA_CONFIG.WIDTH, SOLLA_CONFIG.HEIGHT).attr({fill: randomColor})
+    this.drawBackground(randomColor)
+
     await parser.parseString(this.drawer.svg(), (err: any, result: any) => {
       if (err) {
         console.log(err)
@@ -75,6 +76,11 @@ export default class VSDrawer extends BaseSVGDrawer {
     this.buildSVG()
     console.log(this.basedSvg.svg.g)
     return builder.buildObject(this.basedSvg)
+  }
+
+  private drawBackground (randomColor: any) {
+    this.drawer.rect(SOLLA_CONFIG.WIDTH, SOLLA_CONFIG.HEIGHT).attr({fill: randomColor})
+    this.drawer.text('@phodal').move(SOLLA_CONFIG.WIDTH - 180, SOLLA_CONFIG.HEIGHT - 80).font({size: 24}).fill({color: '#fff'})
   }
 
   private buildSVG () {

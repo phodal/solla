@@ -37,7 +37,7 @@ export default class VSDrawer extends BaseSVGDrawer {
   }
   async draw () {
 
-    await this.buildSVG()
+    this.buildSVG()
     console.log(this.basedSvg)
     return builder.buildObject(this.basedSvg)
   }

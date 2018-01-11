@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 let colors = require('colors')
 let program = require('commander')
 let version = require('../../package.json').version

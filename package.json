@@ -1,6 +1,6 @@
 {
   "name": "solla",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "",
   "main": "build/main/index.js",
   "bin": "build/main/cli.js",

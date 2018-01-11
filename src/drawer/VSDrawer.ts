@@ -82,22 +82,19 @@ export default class VSDrawer extends BaseSVGDrawer {
       .rect(SOLLA_CONFIG.WIDTH, SOLLA_CONFIG.HEIGHT)
       .attr({fill: ColorUtils.getRandomColor()})
 
-    this.drawer
-      .text('@phodal')
-      .move(SOLLA_CONFIG.WIDTH - 180, SOLLA_CONFIG.HEIGHT - 80)
-      .font({size: 24})
-      .fill({color: '#fff'})
-
-    console.log(this.stacks.length)
     let positions = PositionUtils.getBasePosition(this.stacks.length)
-
     for (let i = 0;i < positions.length - 1; i ++) {
       console.log(positions[i], positions[i + 1])
       this.drawer
         .polygon(`${positions[i]},0 ${positions[i + 1]},1000 1800,1000 1800,0`)
         .fill(ColorUtils.getRandomColor())
     }
-    // console.log(position)
+
+    this.drawer
+      .text('@phodal')
+      .move(SOLLA_CONFIG.WIDTH - 180, SOLLA_CONFIG.HEIGHT - 80)
+      .font({size: 24})
+      .fill({color: '#fff'})
   }
 
   private buildSVG () {

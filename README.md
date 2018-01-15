@@ -4,9 +4,36 @@
 
 Features:
 
- - Poly Background Generate (todo)
- - VS SVG Generate (todo)
+ - Poly Background Generate (Done)
+ - VS SVG Generate (Done)
  - List Generate (todo)
+ 
+Usage
+---
+
+```
+npm install -g solla
+```
+
+### LowPoly Generate
+
+```
+solla -l 
+```
+
+### VS SVG Generate
+
+```
+solla -v <stacks>
+```
+
+example
+
+```
+solla -v react,angular,vue
+```
+
+[![Solla Example](https://phodal.github.io/solla/doc/vs-example.svg)](https://github.com/phodal/solla)
 
 License
 ---
